@@ -1,13 +1,16 @@
-import './App.css';
+import Footer from "./components/Footer";
+import Navbar from "./components/Navbar";
+import Home from "./pages/Home";
 
 function App() {
   return (
-    <>
-    <div className="container">
-      <h1>XARO Clothing 👕</h1>
-      <p>Xaro — Where style meets attitude 🐺</p>
+    <div>
+      <Navbar />
+
+      <Home />
+
+      <Footer />
     </div>
-    </>
   );
 }
 
