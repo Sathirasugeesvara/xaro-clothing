@@ -1,10 +1,10 @@
-import "../styles/Home.css";
+import "../App.css";
 
-function Home() {
+const Home = () => {
   return (
 
     <div className="container">
-      <h1>XARO Clothing 👕</h1>
+      <h1>XARO Clothing</h1>
       <p>Xaro — Where style meets attitude 🐺</p>
     </div>
 

@@ -52,7 +52,7 @@ To build a modern **MERN Stack e-commerce clothing website** with a clean UI and
 ## 👨‍💻 Developer
 
 Created by: **Sathira**  
-📍 University Project  
+📍 Self-Learning Project  
 💻 Learning Full Stack Development
 
 ---
