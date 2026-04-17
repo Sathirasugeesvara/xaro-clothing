@@ -321,6 +321,141 @@ h2 {
 
 
 
+/* Dropdown Menu */
+.department {
+  position: relative;
+}
+.dropdown {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: white;
+  border-radius: 8px;
+  padding: 8px;
+  min-width: 160px;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+  z-index: 9999; 
+}
+.dropdown.show {
+  display: block;
+}
+.department:hover .dropdown {
+  display: block;
+}
+.dropdown li {
+  list-style: none;
+}
+.dropdown li a {
+  display: block;
+  padding: 10px;
+  text-decoration: none;
+  color: #333;
+}
+.dropdown li:hover {
+  background: #f5f5f5;
+}
+
+
+
+
+
+
+/* PRODUCT DETAILS PAGE */
+.details-container {
+  display: flex;
+  gap: 60px;
+  padding: 60px;
+  background: #fff;
+}
+.details-left img {
+  width: 420px;
+  border-radius: 10px;
+}
+.details-right {
+  max-width: 400px;
+}
+.details-right h1 {
+  font-size: 28px;
+  font-weight: 600;
+}
+.details-right .price {
+  font-size: 22px;
+  color: #444;
+  margin: 10px 0;
+}
+.desc {
+  color: #666;
+  margin-bottom: 20px;
+  line-height: 1.5;
+}
+.sizes h4 {
+  margin-bottom: 10px;
+}
+.size-list button {
+  margin: 5px;
+  padding: 8px 14px;
+  border: 1px solid #ccc;
+  background: white;
+  cursor: pointer;
+  transition: 0.2s;
+}
+.size-list button:hover {
+  border-color: black;
+}
+.size-list .active {
+  background: black;
+  color: white;
+}
+.quantity {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+  margin: 20px 0;
+}
+.quantity button {
+  padding: 6px 14px;
+  border: 1px solid #ccc;
+  background: white;
+  cursor: pointer;
+}
+.add-btn {
+  width: 100%;
+  padding: 14px;
+  background: black;
+  color: white;
+  border: none;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.add-btn:hover {
+  background: #333;
+}
+.add-btn:disabled {
+  background: #aaa;
+  cursor: not-allowed;
+}
+@media (max-width: 768px) {
+  .details-container {
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+  }
+  .details-left img {
+    width: 100%;
+    max-width: 300px;
+  }
+  .details-right {
+    width: 100%;
+    text-align: center;
+  }
+}
+
+
+
+
+
+
 /* Footer */
 .footer {
   background: #000;
@@ -446,63 +581,3 @@ h2 {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-.department {
-  position: relative;
-}
-
-/* FIXED DROPDOWN */
-.dropdown {
-  display: none;
-  position: absolute;
-  top: 100%; /* important */
-  left: 0;
-
-  background: white;
-  border-radius: 8px;
-  padding: 8px;
-  min-width: 160px;
-
-  box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-
-  z-index: 9999; /* 🔥 VERY IMPORTANT */
-}
-.dropdown.show {
-  display: block;
-}
-
-/* prevent gap issue */
-.department:hover .dropdown {
-  display: block;
-}
-
-/* make items clickable properly */
-.dropdown li {
-  list-style: none;
-}
-
-.dropdown li a {
-  display: block;   /* 🔥 IMPORTANT */
-  padding: 10px;
-  text-decoration: none;
-  color: #333;
-}
-
-.dropdown li:hover {
-  background: #f5f5f5;
-}
