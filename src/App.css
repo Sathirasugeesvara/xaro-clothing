@@ -144,10 +144,211 @@ h2 {
 .container p {
   animation-delay: 0.3s;
 }
+.hero-home {
+  height: 90vh;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: 0.6s ease-in-out;
+}
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.55);
+}
+.hero-content {
+  position: relative;
+  text-align: center;
+  color: white;
+  max-width: 700px;
+  padding: 20px;
+}
+.hero-content h1 {
+  font-size: 3rem;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  text-shadow: 0 5px 20px rgba(0,0,0,0.5);
+}
+.hero-content p {
+  font-size: 1.1rem;
+  color: #e5e5e5;
+  margin-top: 10px;
+}
+.hero-search input {
+  margin-top: 20px;
+  width: 80%;
+  max-width: 400px;
+  padding: 12px 15px;
+  border-radius: 30px;
+  border: none;
+  outline: none;
+}
+.hero-search input {
+  margin-top: 20px;
+  width: 80%;
+  max-width: 420px;
+  padding: 14px 18px;
+  border-radius: 40px;
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  color: white;
+  font-size: 14px;
+  outline: none;
+  transition: 0.3s ease;
+}
+.hero-search input::placeholder {
+  color: rgba(255, 255, 255, 0.7);
+}
+.hero-search input:focus {
+  border: 1px solid #ffb347;
+  box-shadow: 0 0 15px rgba(255, 179, 71, 0.4);
+}
+.hero-content button {
+  margin-top: 20px;
+  padding: 12px 25px;
+  border: none;
+  border-radius: 25px;
+  background: #ffb347;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.hero-content button:hover {
+  background: #ffa500;
+  transform: scale(1.05);
+}
+.hero-home {
+  height: 90vh;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  transition: background-image 0.5s ease-in-out;
+}
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.55);
+}
+.hero-content {
+  position: relative;
+  color: white;
+  text-align: center;
+}
+.hero-home {
+  height: 90vh;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: 0.6s ease-in-out;
+}
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.55);
+}
+.hero-content {
+  position: relative;
+  text-align: center;
+  color: white;
+  z-index: 2;
+}
+.hero-content h1 {
+  font-size: 3rem;
+  letter-spacing: 3px;
+}
+.hero-content p {
+  color: #ddd;
+  margin: 10px 0;
+}
+.hero-content button {
+  padding: 12px 25px;
+  border: none;
+  border-radius: 25px;
+  background: #ffb347;
+  cursor: pointer;
+}
+.arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0, 0, 0, 0.5);
+  border: none;
+  color: white;
+  font-size: 28px;
+  padding: 10px 14px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(6px);
+  z-index: 10;
+}
+.arrow:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: translateY(-50%) scale(1.1);
+}
+.arrow.left {
+  left: 20px;
+}
+.arrow.right {
+  right: 20px;
+}
+.arrow.right {
+  right: 15px;
+}
+.dots {
+  position: absolute;
+  bottom: 20px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+.dot {
+  width: 10px;
+  height: 10px;
+  background: rgba(255, 255, 255, 0.4);
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.dot.active {
+  width: 26px;
+  border-radius: 20px;
+  background: white;
+}
+.dot:hover {
+  background: rgba(255, 255, 255, 0.8);
+}
 @keyframes fadeUp {
   to {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+@media (max-width: 768px) {
+  .desktop-only {
+    display: none;
+  }
+  .dot {
+    width: 8px;
+    height: 8px;
+  }
+  .dot.active {
+    width: 20px;
+  }
+  .hero-content h1 {
+    font-size: 2rem;
   }
 }
 
@@ -456,6 +657,105 @@ h2 {
 
 
 
+
+
+/* About Page */
+.about-page {
+  background: #fff;
+  min-height: 100vh;
+  font-family: "Segoe UI", sans-serif;
+}
+.about-hero {
+  text-align: center;
+  padding: 80px 20px 40px;
+}
+.about-hero h1 {
+  font-size: 3rem;
+  letter-spacing: 4px;
+}
+.about-hero p {
+  color: #666;
+  margin-top: 10px;
+}
+.about-section {
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 0 20px;
+  text-align: center;
+}
+.about-section h2 {
+  margin-bottom: 15px;
+  font-size: 1.8rem;
+}
+.about-section p {
+  color: #555;
+  line-height: 1.7;
+  margin-bottom: 10px;
+}
+.about-section ul {
+  list-style: none;
+  padding: 0;
+}
+.about-section li {
+  margin: 8px 0;
+  color: #444;
+}
+
+
+
+
+/* Contact Page */
+.contact-page {
+  background: #fff;
+  min-height: 100vh;
+  font-family: "Segoe UI", sans-serif;
+}
+.contact-hero {
+  text-align: center;
+  padding: 80px 20px 40px;
+}
+.contact-hero h1 {
+  font-size: 2.5rem;
+  letter-spacing: 2px;
+}
+.contact-hero p {
+  color: #666;
+  margin-top: 10px;
+}
+.contact-section {
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 0 20px;
+  text-align: center;
+}
+.contact-section h2 {
+  margin-bottom: 15px;
+}
+.contact-section p {
+  color: #555;
+  margin: 5px 0;
+}
+.whatsapp-btn {
+  margin-top: 20px;
+  padding: 14px 30px;
+  background: #25D366;
+  color: white;
+  border: none;
+  font-size: 1rem;
+  cursor: pointer;
+  border-radius: 6px;
+  transition: 0.3s;
+}
+.whatsapp-btn:hover {
+  background: #1ebe5d;
+}
+
+
+
+
+
+
+
 /* Footer */
 .footer {
   background: #000;
@@ -573,11 +873,3 @@ h2 {
     text-align: center;
   }
 }
-
-
-
-
-
-
-
-

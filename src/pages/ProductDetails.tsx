@@ -13,6 +13,27 @@ const ProductDetails = () => {
 
   if (!product) return <h1>Product not found</h1>;
 
+
+     // ✅ WhatsApp Order Function
+  const handleWhatsAppOrder = () => {
+    const phoneNumber = "94764627089"; 
+
+    const message = `Hello, I want to order:
+
+    Product: ${product.name}
+    Size: ${selectedSize}
+    Quantity: ${quantity}
+    Price: Rs ${product.price}
+
+    Link: ${window.location.href}`;
+
+    const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+
+    window.open(url, "_blank");
+  };
+
+
+
   return (
     <div className="details-container">
       
@@ -53,8 +74,12 @@ const ProductDetails = () => {
         </div>
 
         {/* BUTTON */}
-        <button className="add-btn" disabled={!selectedSize}>
-          {product.stock > 0 ? "Buy Now" : "Out of Stock"}
+        <button
+          className="add-btn"
+          disabled={!selectedSize || product.stock === 0}
+          onClick={handleWhatsAppOrder}
+        >
+          {product.stock > 0 ? "Order via WhatsApp" : "Out of Stock"}
         </button>
 
       </div>
