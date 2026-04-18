@@ -12,6 +12,8 @@ h2 {
 
 
 
+
+
 /* Navbar */
 .navbar {
   display: flex;
@@ -72,6 +74,57 @@ h2 {
   cursor: pointer;
   color: #000;
 }
+.desktop-only {
+  display: flex;
+}
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.5);
+  z-index: 998;
+}
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: -300px;  
+  width: 260px;
+  height: 100vh;
+  background: #fff;
+  z-index: 2000; 
+  transition: 0.3s ease-in-out;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 5px 0 20px rgba(0,0,0,0.15);
+}
+.sidebar.open {
+  left: 0; 
+}
+.sidebar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 18px;
+  margin-bottom: 20px;
+}
+.sidebar-links {
+  list-style: none;
+  padding: 0;
+}
+.sidebar-links li {
+  padding: 15px 0;
+  border-bottom: 1px solid #eee;
+}
+.sidebar-links li a {
+  text-decoration: none;
+  color: #333;
+  font-size: 16px;
+}
+.navbar-toggle {
+  display: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
 @media (max-width: 768px) {
   .navbar-links {
     position: absolute;
@@ -101,6 +154,9 @@ h2 {
   .navbar-actions {
     margin-left: auto;
   }
+  .desktop-only {
+    display: none;
+  }
 }
 
 
@@ -116,7 +172,7 @@ h2 {
   align-items: center;
   min-height: 90vh;
   background: #fff;
-  color: #000; 
+  color: #000;
   text-align: center;
   padding: 2rem;
   font-family: "Segoe UI", sans-serif;
@@ -126,7 +182,6 @@ h2 {
   font-weight: 700;
   letter-spacing: 2px;
   margin-bottom: 1rem;
-  color: #000; 
   text-transform: uppercase;
 }
 .container p {
@@ -136,7 +191,8 @@ h2 {
   line-height: 1.6;
   font-style: italic;
 }
-.container h1, .container p {
+.container h1,
+.container p {
   opacity: 0;
   transform: translateY(20px);
   animation: fadeUp 1s ease forwards;
@@ -145,9 +201,9 @@ h2 {
   animation-delay: 0.3s;
 }
 .hero-home {
-  height: 90vh;
+  height: 93vh;
   background-size: cover;
-  background-position: center;
+  background-position: center 20%;
   position: relative;
   display: flex;
   align-items: center;
@@ -157,34 +213,23 @@ h2 {
 .hero-overlay {
   position: absolute;
   inset: 0;
-  background: rgba(0,0,0,0.55);
+  background: rgba(0, 0, 0, 0.55);
 }
 .hero-content {
   position: relative;
   text-align: center;
-  color: white;
   max-width: 700px;
-  padding: 20px;
+  color: white;
+  z-index: 2;
 }
 .hero-content h1 {
   font-size: 3rem;
-  letter-spacing: 4px;
+  letter-spacing: 3px;
   text-transform: uppercase;
-  text-shadow: 0 5px 20px rgba(0,0,0,0.5);
 }
 .hero-content p {
-  font-size: 1.1rem;
-  color: #e5e5e5;
-  margin-top: 10px;
-}
-.hero-search input {
-  margin-top: 20px;
-  width: 80%;
-  max-width: 400px;
-  padding: 12px 15px;
-  border-radius: 30px;
-  border: none;
-  outline: none;
+  color: #ddd;
+  margin: 10px 0;
 }
 .hero-search input {
   margin-top: 20px;
@@ -222,62 +267,6 @@ h2 {
   background: #ffa500;
   transform: scale(1.05);
 }
-.hero-home {
-  height: 90vh;
-  background-size: cover;
-  background-position: center;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  transition: background-image 0.5s ease-in-out;
-}
-.hero-overlay {
-  position: absolute;
-  inset: 0;
-  background: rgba(0,0,0,0.55);
-}
-.hero-content {
-  position: relative;
-  color: white;
-  text-align: center;
-}
-.hero-home {
-  height: 90vh;
-  background-size: cover;
-  background-position: center;
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: 0.6s ease-in-out;
-}
-.hero-overlay {
-  position: absolute;
-  inset: 0;
-  background: rgba(0,0,0,0.55);
-}
-.hero-content {
-  position: relative;
-  text-align: center;
-  color: white;
-  z-index: 2;
-}
-.hero-content h1 {
-  font-size: 3rem;
-  letter-spacing: 3px;
-}
-.hero-content p {
-  color: #ddd;
-  margin: 10px 0;
-}
-.hero-content button {
-  padding: 12px 25px;
-  border: none;
-  border-radius: 25px;
-  background: #ffb347;
-  cursor: pointer;
-}
 .arrow {
   position: absolute;
   top: 50%;
@@ -303,9 +292,6 @@ h2 {
 .arrow.right {
   right: 20px;
 }
-.arrow.right {
-  right: 15px;
-}
 .dots {
   position: absolute;
   bottom: 20px;
@@ -330,15 +316,48 @@ h2 {
 .dot:hover {
   background: rgba(255, 255, 255, 0.8);
 }
-@keyframes fadeUp {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+.home-categories {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  padding: 40px;
+}
+.category-card {
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+}
+.category-card img {
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+  transition: 0.3s ease;
+}
+.category-card:hover img {
+  transform: scale(1.05);
+}
+.category-overlay {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  color: white;
+  font-size: 2rem;
+  font-weight: bold;
+  font-style: italic;
 }
 @media (max-width: 768px) {
   .desktop-only {
     display: none;
+  }
+  .hero-home {
+    height: 65vh;
+    background-position: center;
+  }
+  .hero-content h1 {
+    font-size: 2rem;
+  }
+  .hero-content p {
+    font-size: 1rem;
   }
   .dot {
     width: 8px;
@@ -347,11 +366,24 @@ h2 {
   .dot.active {
     width: 20px;
   }
-  .hero-content h1 {
-    font-size: 2rem;
+  .home-categories {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+    padding: 20px;
+  }
+  .category-card img {
+    height: 350px;
+  }
+  .category-overlay {
+    font-size: 1.4rem;
   }
 }
-
+@keyframes fadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
 
 
 
@@ -749,7 +781,68 @@ h2 {
 .whatsapp-btn:hover {
   background: #1ebe5d;
 }
-
+.contact-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 25px;
+  margin-top: 30px;
+}
+.contact-card {
+  background: #fff;
+  padding: 25px 20px;
+  border-radius: 14px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+  transition: 0.3s ease;
+}
+.contact-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 28px rgba(0,0,0,0.12);
+}
+.contact-card h3 {
+  margin: 10px 0 5px;
+}
+.contact-card a {
+  display: inline-block;
+  margin-top: 8px;
+  text-decoration: none;
+  color: #0078d7;
+  font-weight: 500;
+}
+.contact-card a:hover {
+  text-decoration: underline;
+}
+.contact-icon {
+  font-size: 1.8rem;
+  color: #0078d7;
+}
+.whatsapp-section {
+  text-align: center;
+}
+.whatsapp-link {
+  display: block;
+  margin-top: 10px;
+  color: #555;
+  text-decoration: none;
+  font-size: 0.9rem;
+}
+.whatsapp-link:hover {
+  text-decoration: underline;
+}
+.social-section {
+  text-align: center;
+}
+.social-section .contact-card {
+  cursor: pointer;
+}
+.contact-card:hover .fa-facebook-f {
+  color: #1877f2;
+}
+.contact-card:hover .fa-instagram {
+  color: #e1306c;
+}
+.contact-card:hover .fa-tiktok {
+  color: #000;
+}
 
 
 

@@ -43,6 +43,7 @@ const About = () => {
           <li>✔ Fast and reliable service</li>
         </ul>
       </section>
+      <br></br><br></br><br></br>
     </div>
   );
 };

@@ -5,8 +5,14 @@ import "../App.css";
 import img1 from "../assets/img1.jpg";
 import img2 from "../assets/img2.jpg";
 import img3 from "../assets/img3.jpg";
+import img4 from "../assets/img4.jpg";
 
-const images = [img1, img2, img3];
+import womenImg from "../assets/women.jpg";
+import menImg from "../assets/men.jpg";
+import accessoriesImg from "../assets/accessories.jpg";
+import kids from "../assets/kids.jpg";
+
+const images = [img1, img2, img3, img4];
 
 const Home = () => {
   const [current, setCurrent] = useState(0);
@@ -14,11 +20,11 @@ const Home = () => {
 
   useEffect(() => {
     const interval = setInterval(() => {
-      nextSlide();
+      setCurrent((prev) => (prev + 1) % images.length);
     }, 4000);
 
     return () => clearInterval(interval);
-  }, [current]);
+  }, []);
 
   const nextSlide = () => {
     setCurrent((prev) => (prev + 1) % images.length);
@@ -28,52 +34,86 @@ const Home = () => {
     setCurrent((prev) => (prev - 1 + images.length) % images.length);
   };
 
+  // Swipe support
+  let touchStartX = 0;
+  let touchEndX = 0;
+
+  const handleTouchStart = (e: React.TouchEvent) => {
+    touchStartX = e.changedTouches[0].screenX;
+  };
+
+  const handleTouchEnd = (e: React.TouchEvent) => {
+    touchEndX = e.changedTouches[0].screenX;
+
+    if (touchStartX - touchEndX > 50) {
+      nextSlide(); // swipe left
+    }
+
+    if (touchEndX - touchStartX > 50) {
+      prevSlide(); // swipe right
+    }
+  };
 
   return (
-    <div className="hero-home"
-    style={{ backgroundImage: `url(${images[current]})` }}
-    >
+    <>
+      <div
+        className="hero-home"
+        style={{ backgroundImage: `url(${images[current]})` }}
+        onTouchStart={handleTouchStart}
+        onTouchEnd={handleTouchEnd}
+      >
+        <div className="hero-overlay"></div>
 
-      <div className="hero-overlay"></div>
+        <div className="hero-content">
+          <h1>XARO CLOTHING</h1>
+          <p>Where style meets attitude 🐺</p>
 
-      <div className="hero-content">
-        <h1>XARO CLOTHING</h1>
+          <div className="hero-search">
+            <input type="text" placeholder="What are you looking for today?" />
+          </div>
 
-        <p>Where style meets attitude 🐺</p>
-
-        <div className="hero-search">
-          <input
-            type="text"
-            placeholder="What are you looking for today?"
-          />
+          <button onClick={() => navigate("/collection")}>
+            Shop Now
+          </button>
         </div>
 
-        <button onClick={() => navigate("/collection")}>
-          Shop Now
-        </button>
+        <button className="arrow left desktop-only" onClick={prevSlide}>❮</button>
+        <button className="arrow right desktop-only" onClick={nextSlide}>❯</button>
+
+        <div className="dots">
+          {images.map((_, index) => (
+            <span
+              key={index}
+              className={`dot ${index === current ? "active" : ""}`}
+              onClick={() => setCurrent(index)}
+            />
+          ))}
+        </div>
       </div>
 
-      {/* ARROWS (hide on mobile) */}
-<button className="arrow left desktop-only" onClick={prevSlide}>
-  ❮
-</button>
+      {/* CATEGORY SECTION */}
+      <section className="home-categories">
+        <div className="category-card" onClick={() => navigate("/womens")}>
+          <img src={womenImg} alt="Women" />
+          <div className="category-overlay">SHOP WOMENS</div>
+        </div>
 
-<button className="arrow right desktop-only" onClick={nextSlide}>
-  ❯
-</button>
+        <div className="category-card" onClick={() => navigate("/mens")}>
+          <img src={menImg} alt="Men" />
+          <div className="category-overlay">SHOP MENS</div>
+        </div>
 
-{/* DOTS */}
-<div className="dots">
-  {images.map((_, index) => (
-    <span
-      key={index}
-      className={`dot ${index === current ? "active" : ""}`}
-      onClick={() => setCurrent(index)}
-    />
-  ))}
-</div>
+        <div className="category-card" onClick={() => navigate("/kids")}>
+          <img src={kids} alt="Kids" />
+          <div className="category-overlay">SHOP KIDS</div>
+        </div>
 
-    </div>
+        <div className="category-card" onClick={() => navigate("/accessories")}>
+          <img src={accessoriesImg} alt="Accessories" />
+          <div className="category-overlay">SHOP ACCESSORIES</div>
+        </div>
+      </section>
+    </>
   );
 };
 

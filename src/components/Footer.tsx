@@ -1,6 +1,6 @@
 import React from "react";
 import "../App.css";
-import { FaFacebookF, FaInstagram, FaLinkedin, FaTiktok } from "react-icons/fa";
+import { FaFacebookF, FaInstagram, FaWhatsapp, FaTiktok, FaEnvelope } from "react-icons/fa";
 
 
 const Footer: React.FC = () => {
@@ -16,10 +16,11 @@ const Footer: React.FC = () => {
       </div>
 
       <div className="footer-right">
+        <a href="https://wa.me/message/DEHJ54C7PHAQN1"><FaWhatsapp /></a>
         <a href="https://www.facebook.com/xaro.clothing"><FaFacebookF /></a>
         <a href="https://www.instagram.com/xaro_clothing"><FaInstagram /></a>
         <a href="https://www.tiktok.com/@xaro_clothing"><FaTiktok /></a>
-        <a href="https://www.linkedin.com/company/xaro-clothing"><FaLinkedin /></a>
+        <a href="mailto:xaroclothing@gmail.com"><FaEnvelope /></a>
       </div>
     </div>
 
@@ -54,7 +55,6 @@ const Footer: React.FC = () => {
       <div className="footer-col">
         <h4>Support</h4>
         <ul>
-          <li><a href="/returns">Returns</a></li>
           <li><a href="/shipping-info">Shipping Info</a></li>
         </ul>
       </div>
