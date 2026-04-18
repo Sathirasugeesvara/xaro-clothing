@@ -17,10 +17,10 @@ const Navbar: React.FC = () => {
       <ul className="navbar-links desktop-only">
           <li><Link to="/">Home</Link></li>
           <li><Link to="/collection">Collection</Link></li>
-          <li><Link to="/women">Women</Link></li>
-          <li><Link to="/men">Men</Link></li>
-          <li><Link to="/kids">Kids</Link></li>
-          <li><Link to="/accessories">Accessories</Link></li>
+          <li><Link to="/collection/women">Women</Link></li>
+          <li><Link to="/collection/men">Men</Link></li>
+          <li><Link to="/collection/kids">Kids</Link></li>
+          <li><Link to="/collection/accessories">Accessories</Link></li>
         </ul>
 
       <div className="navbar-actions">
@@ -47,10 +47,10 @@ const Navbar: React.FC = () => {
         <ul className="sidebar-links">
           <li onClick={() => setIsOpen(false)}><Link to="/">Home</Link></li>
           <li onClick={() => setIsOpen(false)}><Link to="/collection">Collection</Link></li>
-          <li onClick={() => setIsOpen(false)}><Link to="/women">Women</Link></li>
-          <li onClick={() => setIsOpen(false)}><Link to="/men">Men</Link></li>
-          <li onClick={() => setIsOpen(false)}><Link to="/kids">Kids</Link></li>
-          <li onClick={() => setIsOpen(false)}><Link to="/accessories">Accessories</Link></li>
+          <li onClick={() => setIsOpen(false)}><Link to="/collection/women">Women</Link></li>
+          <li onClick={() => setIsOpen(false)}><Link to="/collection/men">Men</Link></li>
+          <li onClick={() => setIsOpen(false)}><Link to="/collection/kids">Kids</Link></li>
+          <li onClick={() => setIsOpen(false)}><Link to="/collection/accessories">Accessories</Link></li>
         </ul>
       </div>
     </>

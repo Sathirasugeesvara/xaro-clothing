@@ -7,10 +7,10 @@ import img2 from "../assets/img2.jpg";
 import img3 from "../assets/img3.jpg";
 import img4 from "../assets/img4.jpg";
 
-import womenImg from "../assets/women.jpg";
-import menImg from "../assets/men.jpg";
-import accessoriesImg from "../assets/accessories.jpg";
-import kids from "../assets/kids.jpg";
+import womenImg from "../assets/homewomen.jpg";
+import menImg from "../assets/homemen.jpg";
+import accessoriesImg from "../assets/homeaccessories.jpg";
+import kids from "../assets/homekids.jpg";
 
 const images = [img1, img2, img3, img4];
 
@@ -93,22 +93,22 @@ const Home = () => {
 
       {/* CATEGORY SECTION */}
       <section className="home-categories">
-        <div className="category-card" onClick={() => navigate("/womens")}>
+        <div className="category-card" onClick={() => navigate("/collection/women")}>
           <img src={womenImg} alt="Women" />
           <div className="category-overlay">SHOP WOMENS</div>
         </div>
 
-        <div className="category-card" onClick={() => navigate("/mens")}>
+        <div className="category-card" onClick={() => navigate("/collection/men")}>
           <img src={menImg} alt="Men" />
           <div className="category-overlay">SHOP MENS</div>
         </div>
 
-        <div className="category-card" onClick={() => navigate("/kids")}>
+        <div className="category-card" onClick={() => navigate("/collection/kids")}>
           <img src={kids} alt="Kids" />
           <div className="category-overlay">SHOP KIDS</div>
         </div>
 
-        <div className="category-card" onClick={() => navigate("/accessories")}>
+        <div className="category-card" onClick={() => navigate("/collection/accessories")}>
           <img src={accessoriesImg} alt="Accessories" />
           <div className="category-overlay">SHOP ACCESSORIES</div>
         </div>

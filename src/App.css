@@ -783,8 +783,8 @@ h2 {
 }
 .contact-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 25px;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
   margin-top: 30px;
 }
 .contact-card {
@@ -842,6 +842,20 @@ h2 {
 }
 .contact-card:hover .fa-tiktok {
   color: #000;
+}
+@media (max-width: 768px) {
+  .contact-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .contact-card {
+    padding: 20px;
+  }
+}
+@media (max-width: 480px) {
+  .contact-section {
+    padding: 0 15px;
+  }
 }
 
 

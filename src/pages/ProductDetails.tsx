@@ -16,7 +16,7 @@ const ProductDetails = () => {
 
      // ✅ WhatsApp Order Function
   const handleWhatsAppOrder = () => {
-    const phoneNumber = "94764627089"; 
+    const phoneNumber = "94784627089"; 
 
     const message = `Hello, I want to order:
 

@@ -26,6 +26,8 @@ const App = () => {
         <Route path="/accessories" element={<h1>Accessories Section</h1>} />
 
         <Route path="*" element={<h1>404 - Page Not Found</h1>} />
+
+        <Route path="/collection/:category" element={<ProductList />} />
       </Routes>
 
       <Footer />

@@ -3,7 +3,7 @@ import "../App.css";
 import { FaWhatsapp, FaEnvelope, FaPhoneAlt, FaMapMarkerAlt, FaFacebookF, FaInstagram, FaTiktok } from "react-icons/fa";
 
 const Contact: React.FC = () => {
-  const phoneNumber = "94864627089";
+  const phoneNumber = "94784627089";
 
   const handleWhatsApp = () => {
     const message = "Hello, I want to know more about your products.";
