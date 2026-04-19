@@ -1,5 +1,6 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
+import { FaSearch } from "react-icons/fa";
 import "../App.css";
 
 import img1 from "../assets/img1.jpg";
@@ -16,6 +17,7 @@ const images = [img1, img2, img3, img4];
 
 const Home = () => {
   const [current, setCurrent] = useState(0);
+  const [search, setSearch] = useState("");
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -34,25 +36,27 @@ const Home = () => {
     setCurrent((prev) => (prev - 1 + images.length) % images.length);
   };
 
-  // Swipe support
-  let touchStartX = 0;
-  let touchEndX = 0;
+  const handleSearchKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === "Enter") {
+      if (search.trim() !== "") {
+        navigate(`/collection?search=${search}`);
+      }
+    }
+  };
+
+const touchStartX = useRef(0);
+const touchEndX = useRef(0);
 
   const handleTouchStart = (e: React.TouchEvent) => {
-    touchStartX = e.changedTouches[0].screenX;
-  };
+  touchStartX.current = e.changedTouches[0].screenX;
+};
 
-  const handleTouchEnd = (e: React.TouchEvent) => {
-    touchEndX = e.changedTouches[0].screenX;
+const handleTouchEnd = (e: React.TouchEvent) => {
+  touchEndX.current = e.changedTouches[0].screenX;
 
-    if (touchStartX - touchEndX > 50) {
-      nextSlide(); // swipe left
-    }
-
-    if (touchEndX - touchStartX > 50) {
-      prevSlide(); // swipe right
-    }
-  };
+  if (touchStartX.current - touchEndX.current > 50) nextSlide();
+  if (touchEndX.current - touchStartX.current > 50) prevSlide();
+};
 
   return (
     <>
@@ -69,8 +73,26 @@ const Home = () => {
           <p>Where style meets attitude 🐺</p>
 
           <div className="hero-search">
-            <input type="text" placeholder="What are you looking for today?" />
-          </div>
+  <div className="search-box">
+    <input
+      type="text"
+      placeholder="What are you looking for today?"
+      value={search}
+      onChange={(e) => setSearch(e.target.value)}
+      onKeyDown={handleSearchKeyDown}
+    />
+    <span
+      className="search-icon"
+      onClick={() => {
+        if (search.trim() !== "") {
+          navigate(`/collection?search=${search}`);
+        }
+      }}
+    >
+      <FaSearch />
+    </span>
+  </div>
+</div>
 
           <button onClick={() => navigate("/collection")}>
             Shop Now

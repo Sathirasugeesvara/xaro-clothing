@@ -39,24 +39,23 @@ const Footer: React.FC = () => {
       <div className="footer-col">
         <h4>Company</h4>
         <ul>
-          <li><a href="/about">About Us</a></li>
-          <li><a href="/contact">Contact</a></li>
+          <li><Link to="/about">About US</Link></li>
+          <li><Link to="/contact">Contact</Link></li>
         </ul>
       </div>
 
       <div className="footer-col">
         <h4>Privacy & Legal</h4>
         <ul>
-          <li><a href="/faq">FAQs</a></li>
-          <li><a href="/shipping">Terms & Conditions</a></li>
-          <li><a href="/privacy">Privacy Policy</a></li>
+          <li><Link to="/terms">Terms & Conditions</Link></li>
+          <li><Link to="/privacy">Privacy Policy</Link></li>
         </ul>
       </div>
 
       <div className="footer-col">
         <h4>Support</h4>
         <ul>
-          <li><a href="/shipping-info">Shipping Info</a></li>
+          <li><Link to="/shipping">Shipping Info</Link></li>
         </ul>
       </div>
     </div>
