@@ -1,19 +1,11 @@
 <div align="center">
 
-#  XARO CLOTHING
+# 🛍️ XARO CLOTHING
 
-### 🚧 Under Construction 🚧  
-*A modern MERN Stack Clothing E-Commerce Platform*
+### 🚀 Modern React-Based Clothing E-Commerce Platform
 
+🔗 Live Demo:
 https://sathirasugeesvara.github.io/xaro-clothing/
-
-![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
-![Vite](https://img.shields.io/badge/Vite-646CFF?style=for-the-badge&logo=vite&logoColor=FFD62E)
-![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)
-![TailwindCSS](https://img.shields.io/badge/TailwindCSS-0F172A?style=for-the-badge&logo=tailwindcss&logoColor=38BDF8)
-![Node.js](https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=node.js&logoColor=white)
-![Express](https://img.shields.io/badge/Express-000000?style=for-the-badge&logo=express&logoColor=white)
-![MongoDB](https://img.shields.io/badge/MongoDB-4EA94B?style=for-the-badge&logo=mongodb&logoColor=white)
 
 ---
 
@@ -21,52 +13,118 @@ https://sathirasugeesvara.github.io/xaro-clothing/
 
 ---
 
-## 🧠 Tech Stack (Planned)
+## 🚀 Project Overview
 
-- ⚛️ React (Frontend)
-- ⚡ Vite (Fast build tool)
-- 🔷 TypeScript (Type-safe)
-- 🎨 CSS / Tailwind (Styling)
-- 🟢 Node.js (Backend - coming soon)
-- 🚀 Express.js (Backend - framework)
-- 🍃 MongoDB (Database - coming soon)
+**XARO Clothing** is a modern e-commerce web application built using **React + Vite + TypeScript**, designed with a clean UI and smooth user experience.
+
+This project demonstrates a **real-world frontend architecture** by integrating third-party services instead of a traditional backend.
 
 ---
 
-## 📌 Features Coming Soon
+## 🧠 System Architecture
 
-- 🛍️ Modern Clothing Store UI
-- 🧾 Product Listing Page
-- 🛒 Add to Cart System
-- ❤️ Wishlist Feature
-- 🔍 Search & Filter Products
-- 👤 User Authentication
-- 📱 Fully Responsive Design
+* 📊 **Google Sheets** → Acts as a lightweight database
+* 🔗 **SheetDB** → Converts Google Sheets into REST API
+* ☁️ **Cloudinary** → Stores and delivers product images
+* ⚛️ **React** → Handles UI rendering and state management
+
+---
+
+## 📦 Product Data Management
+
+* Created and managed product database using **Google Sheets**
+* Stored product details:
+
+  * Name
+  * Price
+  * Stock
+  * Category
+  * Sizes
+  * Image URL
+* Dynamically fetched data using **SheetDB API**
+
+---
+
+## 🖼️ Image Handling
+
+* Uploaded product images to **Cloudinary**
+* Stored only image URLs in Google Sheets
+* Rendered images dynamically in React using CDN links
+
+---
+
+## ⚙️ Frontend Features
+
+* 🛍️ Dynamic product listing page
+* 🔍 Search & filter products by category
+* 📄 Product detail page (`/product/:id`)
+* ❤️ Wishlist UI (like button)
+* 📱 Fully responsive design
+* ⚡ Smooth animations & modern UI
+* 📡 Live API data fetching
+
+---
+
+## 💡 Key Implementations
+
+* Used `fetch()` to integrate REST API
+* Implemented dynamic routing using React Router
+* Built reusable components (Navbar, Card, Footer)
+* Added loading skeleton UI for better UX
+* Implemented WhatsApp-based ordering system
+
+---
+
+## 📲 Ordering System
+
+* Orders are handled via **WhatsApp integration**
+* Automatically generates order message with:
+
+  * Product name
+  * Selected size
+  * Quantity
+  * Price
+  * Product link
 
 ---
 
 ## 🎯 Project Goal
 
-To build a modern **MERN Stack e-commerce clothing website** with a clean UI and smooth user experience.
+To build a **scalable, modern e-commerce frontend** without a traditional backend by using cloud services and APIs.
 
 ---
 
 ## 👨‍💻 Developer
 
-Created by: **Sathira**  
-📍 Self-Learning Project  
-💻 Learning Full Stack Development
+**Sathira**
+📍 Sri Lanka
+💻 Self-taught Full Stack Developer
 
 ---
 
 ## ⚠️ Note
 
-This project is still in development stage.  
-More updates and features will be added soon 🚀
+This project is actively being improved.
+Upcoming features:
+
+* 🛒 Add to Cart system
+* 👤 User Authentication
+* 🧾 Checkout system
+* 🧠 Backend (Node.js + Express + MongoDB)
 
 ---
 
-## 🚀 Stay Tuned
+## 🚀 Future Improvements
 
-More features coming soon...  
-Thank you for visiting 🙌
+* Replace SheetDB with full backend (MERN)
+* Add payment gateway integration
+* Improve performance & SEO
+* Add admin dashboard
+
+---
+
+## 🙌 Support
+
+If you like this project, feel free to ⭐ the repo and share!
+
+---
