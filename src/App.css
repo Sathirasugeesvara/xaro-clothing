@@ -1078,6 +1078,20 @@ h2 {
   color: #0078d7;
   font-weight: bold;
 }
+.brand-link {
+  color: #fff;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  text-decoration: none;
+  transition: opacity 0.3s ease;
+}
+.brand-link:hover {
+  opacity: 0.8;
+  text-decoration: underline;
+}
+.brand-link:active {
+  opacity: 0.8;
+}
 
 @media (max-width: 768px) {
   .footer {

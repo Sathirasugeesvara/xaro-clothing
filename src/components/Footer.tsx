@@ -63,11 +63,20 @@ const Footer: React.FC = () => {
     <hr className="footer-divider" />
 
     <div className="footer-bottom">
-      <p>
-        Copyright © 2026 XARO Clothing. All rights reserved. 
-        &nbsp; <br /> &nbsp; Powered by <span className="brand">SATHIRA</span>
-      </p>
-    </div>
+  <p>
+    Copyright © 2026 XARO Clothing. All rights reserved.
+    <br />
+    Powered by ◈ {" "}
+    <a
+      href="https://xenora-labs.vercel.app"
+      target="_blank"
+      rel="noopener noreferrer"
+      className="brand-link"
+    >
+       Xenora Labs
+    </a>
+  </p>
+</div>
 
     </footer>
   );
