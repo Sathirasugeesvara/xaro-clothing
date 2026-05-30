@@ -66,9 +66,9 @@ const Footer: React.FC = () => {
   <p>
     Copyright © 2026 XARO Clothing. All rights reserved.
     <br />
-    Powered by ◈ {" "}
+    Powered by {" "}
     <a
-      href="https://xenora-labs.vercel.app"
+      href="https://xenoralabs.vercel.app"
       target="_blank"
       rel="noopener noreferrer"
       className="brand-link"
