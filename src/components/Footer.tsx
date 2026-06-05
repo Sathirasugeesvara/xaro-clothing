@@ -64,16 +64,16 @@ const Footer: React.FC = () => {
 
     <div className="footer-bottom">
   <p>
-    Copyright © 2026 XARO Clothing. All rights reserved.
+    Copyright © 2026 Sathira Sugeeesvara. All rights reserved.
     <br />
     Powered by {" "}
     <a
-      href="https://xenoralabs.vercel.app"
+      href="https://sathirasugeesvara.github.io"
       target="_blank"
       rel="noopener noreferrer"
       className="brand-link"
     >
-       Xenora Labs
+       Sathira Sugeeesvara
     </a>
   </p>
 </div>
