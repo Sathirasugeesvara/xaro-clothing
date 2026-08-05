@@ -2,6 +2,7 @@ import React from "react";
 import "../App.css";
 import { FaFacebookF, FaInstagram, FaWhatsapp, FaTiktok, FaEnvelope } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import config, { getWhatsAppUrl } from "../config";
 
 
 const Footer: React.FC = () => {
@@ -10,18 +11,18 @@ const Footer: React.FC = () => {
 
       <div className="footer-top">
         <div className="footer-left">
-        <h1 className="footer-logo">XARO®</h1>
+        <h1 className="footer-logo">{config.shopNameFull}</h1>
         <p className="footer-text">
-          Your trusted clothing destination for modern styles and timeless fashion.
+          {config.tagline}
         </p>
       </div>
 
       <div className="footer-right">
-        <a href="https://wa.me/message/DEHJ54C7PHAQN1"><FaWhatsapp /></a>
-        <a href="https://www.facebook.com/xaro.clothing"><FaFacebookF /></a>
-        <a href="https://www.instagram.com/xaro_clothing"><FaInstagram /></a>
-        <a href="https://www.tiktok.com/@xaro_clothing"><FaTiktok /></a>
-        <a href="mailto:xaroclothing@gmail.com"><FaEnvelope /></a>
+        <a href={config.whatsappShortLink || getWhatsAppUrl("Hello, I want to know more about your products.")} target="_blank" rel="noopener noreferrer"><FaWhatsapp /></a>
+        <a href={config.social.facebook} target="_blank" rel="noopener noreferrer"><FaFacebookF /></a>
+        <a href={config.social.instagram} target="_blank" rel="noopener noreferrer"><FaInstagram /></a>
+        <a href={config.social.tiktok} target="_blank" rel="noopener noreferrer"><FaTiktok /></a>
+        <a href={`mailto:${config.email}`}><FaEnvelope /></a>
       </div>
     </div>
 

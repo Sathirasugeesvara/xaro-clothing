@@ -1,14 +1,12 @@
 import React from "react";
 import "../App.css";
 import { FaWhatsapp, FaEnvelope, FaPhoneAlt, FaMapMarkerAlt, FaFacebookF, FaInstagram, FaTiktok } from "react-icons/fa";
+import config, { getWhatsAppUrl } from "../config";
 
 const Contact: React.FC = () => {
-  const phoneNumber = "94784627089";
-
   const handleWhatsApp = () => {
     const message = "Hello, I want to know more about your products.";
-    const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
-    window.open(url, "_blank");
+    window.open(getWhatsAppUrl(message), "_blank");
   };
 
   return (
@@ -25,21 +23,21 @@ const Contact: React.FC = () => {
         <div className="contact-card">
           <FaEnvelope className="contact-icon" />
           <h3>Email</h3>
-          <p>xaroclothing@gmail.com</p>
-          <a href="mailto:xaroclothing@gmail.com">Send Email</a>
+          <p>{config.email}</p>
+          <a href={`mailto:${config.email}`}>Send Email</a>
         </div>
 
         <div className="contact-card">
           <FaPhoneAlt className="contact-icon" />
           <h3>Phone</h3>
-          <p>+94 784 627 089</p>
-          <a href="tel:+94784627089">Call Now</a>
+          <p>+{config.whatsappNumber}</p>
+          <a href={`tel:+${config.whatsappNumber}`}>Call Now</a>
         </div>
 
         <div className="contact-card">
           <FaMapMarkerAlt className="contact-icon" />
           <h3>Location</h3>
-          <p>Sri Lanka</p>
+          <p>{config.location}</p>
         </div>
 
       </section>
@@ -58,7 +56,7 @@ const Contact: React.FC = () => {
         {/* Direct link (same as footer) */}
         <a
           className="whatsapp-link"
-          href="https://wa.me/message/DEHJ54C7PHAQN1"
+          href={config.whatsappShortLink || getWhatsAppUrl("Hello, I want to know more about your products.")}
           target="_blank"
           rel="noopener noreferrer"
         >
@@ -79,7 +77,7 @@ const Contact: React.FC = () => {
             <FaFacebookF className="contact-icon" />
             <h3>Facebook</h3>
             <p>Follow us for updates & posts</p>
-            <a href="https://www.facebook.com/xaro.clothing" target="_blank">
+            <a href={config.social.facebook} target="_blank" rel="noopener noreferrer">
               Visit Page
             </a>
           </div>
@@ -88,7 +86,7 @@ const Contact: React.FC = () => {
             <FaInstagram className="contact-icon" />
             <h3>Instagram</h3>
             <p>See photos & reels</p>
-            <a href="https://www.instagram.com/xaro_clothing" target="_blank">
+            <a href={config.social.instagram} target="_blank" rel="noopener noreferrer">
               View Profile
             </a>
           </div>
@@ -97,7 +95,7 @@ const Contact: React.FC = () => {
             <FaTiktok className="contact-icon" />
             <h3>TikTok</h3>
             <p>Watch videos & trends</p>
-            <a href="https://www.tiktok.com/@xaro_clothing" target="_blank">
+            <a href={config.social.tiktok} target="_blank" rel="noopener noreferrer">
               Watch Now
             </a>
           </div>

@@ -1,6 +1,7 @@
 import { useParams, useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
 import Card from "../components/Card";
+import config from "../config";
 
 const ProductList = () => {
   const { category } = useParams();
@@ -14,7 +15,7 @@ const ProductList = () => {
 
   // 🔥 FETCH DATA
   useEffect(() => {
-    fetch("https://sheetdb.io/api/v1/0d9w4d1lmz6b1")
+    fetch(config.sheetDbUrl)
       .then((res) => res.json())
       .then((data) => {
         setProducts(data);

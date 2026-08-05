@@ -1,8 +1,36 @@
+/* ============================================
+   XARO DESIGN TOKENS
+   Palette drawn from garment tags & denim, not
+   generic "AI cream/terracotta" defaults:
+   --ink      warm charcoal, primary text
+   --canvas   raw canvas background (not cream)
+   --rust     tag-stitch rust — CTAs, price, accents
+   --indigo   denim indigo — links, secondary accent
+   --selvage  muted selvedge green — in-stock
+   --grey     warm grey — captions, dividers, labels
+   ============================================ */
+:root {
+  --ink: #1a1815;
+  --canvas: #ece8e0;
+  --canvas-flat: #f4f2ec;
+  --rust: #a8452b;
+  --rust-dark: #8a3720;
+  --indigo: #2b3a55;
+  --selvage: #4f6b4a;
+  --grey: #8a8378;
+  --hairline: #d8d3c7;
+
+  --font-display: "Bebas Neue", "Arial Narrow", sans-serif;
+  --font-body: "Inter", -apple-system, sans-serif;
+  --font-mono: "IBM Plex Mono", "Courier New", monospace;
+}
+
 body {
-  font-family: Arial, sans-serif;
+  font-family: var(--font-body);
   margin: 0;
   padding: 0;
-  background-color: #f5f5f5;
+  background-color: var(--canvas-flat);
+  color: var(--ink);
 }
 h2 {
   text-align: center;
@@ -19,13 +47,13 @@ h2 {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: #fff; 
+  background: var(--canvas-flat);
   padding: 1rem 3rem;
-  font-family: "Segoe UI", sans-serif;
+  font-family: var(--font-body);
   position: sticky;
   top: 0;
   z-index: 1000;
-  border-bottom: 1px solid #eee;
+  border-bottom: 1px solid var(--hairline);
 }
 .navbar-logo {
   margin-right: 2rem;
@@ -34,9 +62,9 @@ h2 {
   margin-left: 2rem; 
 }
 .navbar-logo a {
-  font-size: 1.5rem;
-  font-weight: bold;
-  color: #000; 
+  font-family: var(--font-display);
+  font-size: 1.9rem;
+  color: var(--ink);
   text-decoration: none;
   letter-spacing: 2px;
 }
@@ -48,31 +76,37 @@ h2 {
   padding: 0;
 }
 .navbar-links li a {
-  color: #333; 
+  color: var(--ink);
   text-decoration: none;
-  font-size: 1rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
   transition: color 0.3s ease;
 }
 .navbar-links li a:hover {
-  color: #0078d7;
+  color: var(--rust);
 }
 .navbar-actions {
   display: flex;
   gap: 1.5rem;
 }
 .nav-icon {
-  font-size: 1.3rem;
-  color: #000;
+  font-size: 1.1rem;
+  color: var(--ink);
+  background: none;
+  border: none;
+  cursor: pointer;
   transition: color 0.3s ease;
 }
 .nav-icon:hover {
-  color: #555;
+  color: var(--rust);
 }
 .navbar-toggle {
   display: none;
   font-size: 1.5rem;
   cursor: pointer;
-  color: #000;
+  color: var(--ink);
 }
 .desktop-only {
   display: flex;
@@ -89,7 +123,7 @@ h2 {
   left: -300px;  
   width: 260px;
   height: 100vh;
-  background: #fff;
+  background: var(--canvas-flat);
   z-index: 2000; 
   transition: 0.3s ease-in-out;
   padding: 20px;
@@ -106,6 +140,8 @@ h2 {
   align-items: center;
   font-size: 18px;
   margin-bottom: 20px;
+  font-family: var(--font-display);
+  letter-spacing: 1px;
 }
 .sidebar-links {
   list-style: none;
@@ -113,12 +149,15 @@ h2 {
 }
 .sidebar-links li {
   padding: 15px 0;
-  border-bottom: 1px solid #eee;
+  border-bottom: 1px solid var(--hairline);
 }
 .sidebar-links li a {
   text-decoration: none;
-  color: #333;
-  font-size: 16px;
+  color: var(--ink);
+  font-size: 15px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
 }
 .navbar-toggle {
   display: none;
@@ -175,7 +214,7 @@ h2 {
   color: #000;
   text-align: center;
   padding: 2rem;
-  font-family: "Segoe UI", sans-serif;
+  font-family: var(--font-body);
 }
 .container h1 {
   font-size: 3rem;
@@ -223,13 +262,18 @@ h2 {
   z-index: 2;
 }
 .hero-content h1 {
-  font-size: 3rem;
-  letter-spacing: 3px;
+  font-family: var(--font-display);
+  font-size: 4.5rem;
+  letter-spacing: 4px;
   text-transform: uppercase;
+  line-height: 1;
 }
 .hero-content p {
   color: #ddd;
   margin: 10px 0;
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  letter-spacing: 1px;
 }
 .hero-search {
   display: flex;
@@ -279,54 +323,28 @@ h2 {
   transition: 0.3s;
 }
 .search-icon:hover {
-  background: rgba(255, 179, 71, 0.3);
-}
-.search-icon svg {
-  font-size: 16px;
-}
-.search-box input {
-  flex: 1;
-  padding: 14px 18px;
-  border: none;
-  outline: none;
-  font-size: 14px;
-  background: transparent;
-  color: white;
-}
-.search-box input::placeholder {
-  color: rgba(255,255,255,0.7);
-}
-.search-icon {
-  width: 50px;
-  height: 100%;
-  border: none;
-  background: transparent;
-  color: white;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  transition: 0.3s;
-}
-.search-icon:hover {
-  background: rgba(255, 179, 71, 0.3);
+  background: rgba(168, 69, 43, 0.35);
 }
 .search-icon svg {
   font-size: 16px;
 }
 .hero-content button {
-  margin-top: 20px;
-  padding: 12px 25px;
-  border: none;
-  border-radius: 25px;
-  background: #ffb347;
-  font-weight: bold;
+  margin-top: 24px;
+  padding: 13px 32px;
+  border: 1.5px solid var(--rust);
+  border-radius: 2px;
+  background: var(--rust);
+  color: #fff;
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  letter-spacing: 2px;
   cursor: pointer;
-  transition: 0.3s;
+  transition: 0.25s;
 }
 .hero-content button:hover {
-  background: #ffa500;
-  transform: scale(1.05);
+  background: transparent;
+  border-color: #fff;
+  transform: none;
 }
 .arrow {
   position: absolute;
@@ -402,9 +420,9 @@ h2 {
   bottom: 20px;
   left: 20px;
   color: white;
-  font-size: 2rem;
-  font-weight: bold;
-  font-style: italic;
+  font-family: var(--font-display);
+  font-size: 1.8rem;
+  letter-spacing: 1px;
 }
 @media (max-width: 768px) {
   .desktop-only {
@@ -452,16 +470,16 @@ h2 {
 /* Product List */
 .product-page {
   padding: 40px 20px;
-  background: #f5f6f8;
+  background: var(--canvas-flat);
   min-height: 100vh;
 }
 .title {
   text-align: center;
-  font-size: 28px;
-  font-weight: 700;
+  font-family: var(--font-display);
+  font-size: 2.4rem;
+  letter-spacing: 2px;
   margin-bottom: 30px;
-  color: #222;
-  letter-spacing: 1px;
+  color: var(--ink);
 }
 .grid {
   display: grid;
@@ -516,21 +534,23 @@ h2 {
   width: 100%;
   max-width: 260px;
   background: #fff;
-  border-radius: 16px;
+  border-radius: 6px;
   overflow: hidden;
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+  border: 1px solid var(--hairline);
+  box-shadow: 0 3px 10px rgba(26, 24, 21, 0.05);
   cursor: pointer;
   transition: 0.25s ease;
 }
 .product-card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.12);
+  transform: translateY(-4px);
+  box-shadow: 0 10px 22px rgba(26, 24, 21, 0.1);
+  border-color: var(--rust);
 }
 .image-wrapper {
   width: 100%;
   height: 280px;
   overflow: hidden;
-  background: #f5f5f5;
+  background: var(--canvas);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -545,38 +565,45 @@ h2 {
   transform: scale(1.05);
 }
 .product-info {
-  padding: 12px 14px;
+  padding: 12px 14px 14px;
   background: white;
+  border-top: 1px dashed var(--hairline);
 }
 .product-info h3 {
-  font-size: 15px;
+  font-size: 14px;
   font-weight: 600;
-  color: #222;
-  margin: 0 0 6px 0;
+  color: var(--ink);
+  margin: 0 0 8px 0;
   line-height: 1.3;
 }
 .price {
-  font-size: 16px;
-  font-weight: 700;
-  color: #111;
+  font-family: var(--font-mono);
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--rust);
   margin: 0;
+  letter-spacing: 0.3px;
 }
 .stock {
-  font-size: 11px;
-  padding: 5px 10px;
-  border-radius: 999px;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  padding: 3px 8px;
+  border-radius: 2px;
   display: inline-block;
   width: fit-content;
   font-weight: 600;
-  margin-top: 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  margin-top: 6px;
+  border: 1px solid currentColor;
 }
 .stock.in {
-  background: rgba(22, 163, 74, 0.1);
-  color: #16a34a;
+  background: rgba(79, 107, 74, 0.08);
+  color: var(--selvage);
 }
 .stock.out {
-  background: rgba(220, 38, 38, 0.1);
-  color: #dc2626;
+  background: rgba(168, 69, 43, 0.08);
+  color: var(--rust);
 }
 .heart-btn {
   position: absolute;
@@ -636,14 +663,14 @@ h2 {
 .shipping-page {
   background: #fff;
   min-height: 100vh;
-  font-family: "Segoe UI", sans-serif;
+  font-family: var(--font-body);
 }
 .shipping-hero {
   text-align: center;
   padding: 80px 20px 40px;
 }
 .shipping-hero h1 {
-  font-size: 2.8rem;
+  font-family: var(--font-display); font-weight: normal; font-size: 2.8rem;
   letter-spacing: 3px;
 }
 .shipping-hero p {
@@ -681,7 +708,7 @@ h2 {
 .policy-page {
   background: #fff;
   min-height: 100vh;
-  font-family: "Segoe UI", sans-serif;
+  font-family: var(--font-body);
   padding-bottom: 50px;
 }
 .policy-hero {
@@ -689,7 +716,7 @@ h2 {
   padding: 80px 20px 40px;
 }
 .policy-hero h1 {
-  font-size: 2.6rem;
+  font-family: var(--font-display); font-weight: normal; font-size: 2.6rem;
   letter-spacing: 2px;
 }
 .policy-hero p {
@@ -733,42 +760,55 @@ h2 {
 }
 .details-left img {
   width: 420px;
-  border-radius: 10px;
+  border-radius: 6px;
 }
 .details-right {
   max-width: 400px;
 }
 .details-right h1 {
-  font-size: 28px;
-  font-weight: 600;
+  font-family: var(--font-display);
+  font-size: 2.2rem;
+  letter-spacing: 1px;
+  font-weight: normal;
 }
 .details-right .price {
-  font-size: 22px;
-  color: #444;
+  font-family: var(--font-mono);
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--rust);
   margin: 10px 0;
 }
 .desc {
-  color: #666;
+  color: var(--grey);
   margin-bottom: 20px;
   line-height: 1.5;
 }
 .sizes h4 {
   margin-bottom: 10px;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--grey);
 }
 .size-list button {
-  margin: 5px;
-  padding: 8px 14px;
-  border: 1px solid #ccc;
+  margin: 0 8px 8px 0;
+  padding: 8px 16px;
+  border: 1px solid var(--ink);
   background: white;
+  color: var(--ink);
+  font-family: var(--font-mono);
+  font-size: 13px;
   cursor: pointer;
   transition: 0.2s;
 }
 .size-list button:hover {
-  border-color: black;
+  border-color: var(--rust);
+  color: var(--rust);
 }
 .size-list .active {
-  background: black;
+  background: var(--ink);
   color: white;
+  border-color: var(--ink);
 }
 .quantity {
   display: flex;
@@ -778,24 +818,28 @@ h2 {
 }
 .quantity button {
   padding: 6px 14px;
-  border: 1px solid #ccc;
+  border: 1px solid var(--hairline);
   background: white;
+  color: var(--ink);
   cursor: pointer;
 }
 .add-btn {
   width: 100%;
-  padding: 14px;
-  background: black;
+  padding: 15px;
+  background: var(--rust);
   color: white;
   border: none;
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  letter-spacing: 1.5px;
   cursor: pointer;
   transition: 0.3s;
 }
 .add-btn:hover {
-  background: #333;
+  background: var(--rust-dark);
 }
 .add-btn:disabled {
-  background: #aaa;
+  background: #c9c3b6;
   cursor: not-allowed;
 }
 @media (max-width: 768px) {
@@ -825,14 +869,14 @@ h2 {
 .about-page {
   background: #fff;
   min-height: 100vh;
-  font-family: "Segoe UI", sans-serif;
+  font-family: var(--font-body);
 }
 .about-hero {
   text-align: center;
   padding: 80px 20px 40px;
 }
 .about-hero h1 {
-  font-size: 3rem;
+  font-family: var(--font-display); font-weight: normal; font-size: 3rem;
   letter-spacing: 4px;
 }
 .about-hero p {
@@ -870,14 +914,14 @@ h2 {
 .contact-page {
   background: #fff;
   min-height: 100vh;
-  font-family: "Segoe UI", sans-serif;
+  font-family: var(--font-body);
 }
 .contact-hero {
   text-align: center;
   padding: 80px 20px 40px;
 }
 .contact-hero h1 {
-  font-size: 2.5rem;
+  font-family: var(--font-display); font-weight: normal; font-size: 2.5rem;
   letter-spacing: 2px;
 }
 .contact-hero p {
@@ -899,17 +943,19 @@ h2 {
 }
 .whatsapp-btn {
   margin-top: 20px;
-  padding: 14px 30px;
-  background: #25D366;
+  padding: 14px 32px;
+  background: var(--selvage);
   color: white;
   border: none;
-  font-size: 1rem;
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  letter-spacing: 1.5px;
   cursor: pointer;
-  border-radius: 6px;
+  border-radius: 2px;
   transition: 0.3s;
 }
 .whatsapp-btn:hover {
-  background: #1ebe5d;
+  background: #3d5539;
 }
 .contact-grid {
   display: grid;
@@ -920,22 +966,28 @@ h2 {
 .contact-card {
   background: #fff;
   padding: 25px 20px;
-  border-radius: 14px;
-  box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+  border-radius: 6px;
+  border: 1px solid var(--hairline);
+  box-shadow: 0 3px 10px rgba(26, 24, 21, 0.05);
   transition: 0.3s ease;
 }
 .contact-card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 12px 28px rgba(0,0,0,0.12);
+  transform: translateY(-4px);
+  box-shadow: 0 10px 22px rgba(26, 24, 21, 0.1);
+  border-color: var(--rust);
 }
 .contact-card h3 {
   margin: 10px 0 5px;
+  font-family: var(--font-display);
+  letter-spacing: 0.5px;
+  font-weight: normal;
+  font-size: 1.3rem;
 }
 .contact-card a {
   display: inline-block;
   margin-top: 8px;
   text-decoration: none;
-  color: #0078d7;
+  color: var(--indigo);
   font-weight: 500;
 }
 .contact-card a:hover {
@@ -943,7 +995,7 @@ h2 {
 }
 .contact-icon {
   font-size: 1.8rem;
-  color: #0078d7;
+  color: var(--rust);
 }
 .whatsapp-section {
   text-align: center;
@@ -995,10 +1047,10 @@ h2 {
 
 /* Footer */
 .footer {
-  background: #000;
+  background: var(--ink);
   color: #fff;
   padding: 2rem 3rem;
-  font-family: "Segoe UI", sans-serif;
+  font-family: var(--font-body);
 }
 .footer-top {
   display: flex;
@@ -1011,8 +1063,9 @@ h2 {
   min-width: 220px;
 }
 .footer-logo {
-  font-size: 2rem;
-  font-weight: bold;
+  font-family: var(--font-display);
+  font-size: 2.2rem;
+  letter-spacing: 1px;
   margin: 0;
 }
 .footer-text {
@@ -1030,7 +1083,7 @@ h2 {
   transition: color 0.3s ease;
 }
 .footer-right a:hover {
-  color: #0078d7;
+  color: var(--rust);
 }
 .footer-middle {
   display: grid;
@@ -1075,7 +1128,7 @@ h2 {
   color: #aaa;
 }
 .brand {
-  color: #0078d7;
+  color: var(--rust);
   font-weight: bold;
 }
 .brand-link {

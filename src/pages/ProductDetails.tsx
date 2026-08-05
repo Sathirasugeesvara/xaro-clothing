@@ -1,6 +1,7 @@
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import "../App.css";
+import config, { getWhatsAppUrl } from "../config";
 
 const ProductDetails = () => {
   const { id } = useParams();
@@ -11,18 +12,14 @@ const ProductDetails = () => {
 
   // 🔥 Fetch data from Google Sheets API (SheetDB)
   useEffect(() => {
-    fetch("https://sheetdb.io/api/v1/0d9w4d1lmz6b1")
+    fetch(config.sheetDbUrl)
       .then(res => res.json())
-    .then(data => {
-      console.log("ALL DATA:", data);
-
-      const found = data.find((item: any) => item.id == id);
-      console.log("FOUND:", found);
-
-      setProduct(found);
-    })
-    .catch(err => console.log("ERROR:", err));
-}, [id]);
+      .then(data => {
+        const found = data.find((item: any) => item.id == id);
+        setProduct(found);
+      })
+      .catch(err => console.error("Failed to load product:", err));
+  }, [id]);
 
   if (!product) return <p style={{ textAlign: "center" }}>Loading...</p>;
 
@@ -31,8 +28,6 @@ const ProductDetails = () => {
 
   // WhatsApp order
   const handleWhatsAppOrder = () => {
-    const phoneNumber = "94784627089";
-
     const message = `Hello, I want to order:
 
 Product: ${product.name}
@@ -42,9 +37,7 @@ Price: Rs ${product.price}
 
 Link: ${window.location.href}`;
 
-    const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
-
-    window.open(url, "_blank");
+    window.open(getWhatsAppUrl(message), "_blank");
   };
 
   return (

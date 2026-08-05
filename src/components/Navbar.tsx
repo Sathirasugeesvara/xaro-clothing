@@ -1,17 +1,18 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
-import { FaSearch, FaHeart, FaBars, FaTimes } from "react-icons/fa";
+import { Link, useNavigate } from "react-router-dom";
+import { FaSearch, FaBars, FaTimes } from "react-icons/fa";
 import "../App.css";
+import config from "../config";
 
 const Navbar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
-
+  const navigate = useNavigate();
 
   return (
     <>
     <nav className="navbar">
       <div className="navbar-logo">
-        <Link to="/">XARO®</Link>
+        <Link to="/">{config.shopNameFull}</Link>
       </div>
 
       <ul className="navbar-links desktop-only">
@@ -24,8 +25,14 @@ const Navbar: React.FC = () => {
         </ul>
 
       <div className="navbar-actions">
-        <Link to="/search" className="nav-icon"><FaSearch /></Link>
-        <Link to="/wishlist" className="nav-icon"><FaHeart /></Link>
+        <button
+          type="button"
+          className="nav-icon"
+          onClick={() => navigate("/search")}
+          aria-label="Search"
+        >
+          <FaSearch />
+        </button>
       </div>
 
       <div className="navbar-toggle" onClick={() => setIsOpen(true)}>
@@ -40,7 +47,7 @@ const Navbar: React.FC = () => {
       {/* Sidebar */}
       <div className={`sidebar ${isOpen ? "open" : ""}`}>
         <div className="sidebar-header">
-          <h2>XARO®</h2>
+          <h2>{config.shopNameFull}</h2>
           <FaTimes onClick={() => setIsOpen(false)} />
         </div>
 
@@ -55,7 +62,7 @@ const Navbar: React.FC = () => {
       </div>
     </>
 
-    
+
   );
 };
 
