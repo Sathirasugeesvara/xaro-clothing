@@ -57,6 +57,8 @@ const Footer: React.FC = () => {
         <h4>Support</h4>
         <ul>
           <li><Link to="/shipping">Shipping Info</Link></li>
+          <li><Link to="/size-guide">Size Guide</Link></li>
+          <li><Link to="/faq">FAQ</Link></li>
         </ul>
       </div>
     </div>
@@ -65,7 +67,7 @@ const Footer: React.FC = () => {
 
     <div className="footer-bottom">
   <p>
-    Copyright © 2026 Sathira Sugeeesvara. All rights reserved.
+    Copyright © 2026 {config.shopNameFull}. All rights reserved.
     <br />
     Powered by {" "}
     <a

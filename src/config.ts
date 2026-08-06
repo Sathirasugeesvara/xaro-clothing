@@ -26,6 +26,31 @@ const config = {
   },
 
   location: "Sri Lanka",
+
+  // Shown as small trust badges near the order button on product pages.
+  trustBadges: [
+    "Cash on Delivery available",
+    "Verified seller",
+    "Island-wide delivery",
+  ],
+
+  // Analytics — leave empty ("") to disable. Fill in once the shop has
+  // their own GA4 property / Meta Pixel, don't reuse someone else's.
+  analytics: {
+    googleAnalyticsId: "", // e.g. "G-XXXXXXXXXX"
+    metaPixelId: "", // e.g. "1234567890123456"
+  },
+
+  // Manually curated Instagram highlights for the homepage — SheetDB/free
+  // Instagram embeds need server-side token refresh, which breaks the
+  // "no backend" rule, so this is a simple config list the shop updates
+  // by hand instead. Each links out to the real post.
+  instagramPosts: [
+    { image: "", link: "https://www.instagram.com/xaro_clothing" },
+    { image: "", link: "https://www.instagram.com/xaro_clothing" },
+    { image: "", link: "https://www.instagram.com/xaro_clothing" },
+    { image: "", link: "https://www.instagram.com/xaro_clothing" },
+  ],
 };
 
 export default config;

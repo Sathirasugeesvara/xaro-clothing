@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { FaSearch } from "react-icons/fa";
 import "../App.css";
+import InstagramFeed from "../components/InstagramFeed";
 
 import img1 from "../assets/img1.jpg";
 import img2 from "../assets/img2.jpg";
@@ -135,6 +136,8 @@ const handleTouchEnd = (e: React.TouchEvent) => {
           <div className="category-overlay">SHOP ACCESSORIES</div>
         </div>
       </section>
+
+      <InstagramFeed />
     </>
   );
 };

@@ -1,6 +1,7 @@
-import { useState } from "react";
 import { FaHeart } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
+import { useWishlist } from "../context/WishlistContext";
+import { formatPrice } from "../utils/format";
 import "../App.css";
 
 type ProductProps = {
@@ -12,35 +13,37 @@ type ProductProps = {
 };
 
 const Card = ({ id, name, price, image, stock }: ProductProps) => {
-  const [liked, setLiked] = useState(false);
   const navigate = useNavigate();
+  const { isWishlisted, toggleWishlist } = useWishlist();
+  const liked = isWishlisted(id);
 
   return (
     <div
       className="product-card"
       onClick={() => navigate(`/product/${id}`)}
     >
-      {/* ❤️ Like button only */}
+      {/* Wishlist toggle */}
       <button
         className="heart-btn"
         onClick={(e) => {
           e.stopPropagation(); // prevent navigation
-          setLiked(!liked);
+          toggleWishlist({ id, name, price, image, stock });
         }}
+        aria-label={liked ? "Remove from wishlist" : "Add to wishlist"}
       >
         <FaHeart className={liked ? "heart active" : "heart"} />
       </button>
 
-      {/* 🖼 Image */}
+      {/* Image */}
       <div className="image-wrapper">
         <img src={image} alt={name} />
       </div>
 
-      {/* 📦 Info */}
+      {/* Info */}
       <div className="product-info">
         <h3 className="name">{name}</h3>
 
-        <p className="price">Rs {price}</p>
+        <p className="price">{formatPrice(price)}</p>
 
         <span className={stock > 0 ? "stock in" : "stock out"}>
           {stock > 0 ? "In Stock" : "Out of Stock"}

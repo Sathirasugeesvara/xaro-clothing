@@ -1,12 +1,16 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { FaSearch, FaBars, FaTimes } from "react-icons/fa";
+import { FaSearch, FaBars, FaTimes, FaHeart, FaShoppingBag } from "react-icons/fa";
 import "../App.css";
 import config from "../config";
+import { useCart } from "../context/CartContext";
+import { useWishlist } from "../context/WishlistContext";
 
 const Navbar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const navigate = useNavigate();
+  const { totalItems } = useCart();
+  const { items: wishlistItems } = useWishlist();
 
   return (
     <>
@@ -33,6 +37,16 @@ const Navbar: React.FC = () => {
         >
           <FaSearch />
         </button>
+
+        <Link to="/wishlist" className="nav-icon nav-icon-badge" aria-label="Wishlist">
+          <FaHeart />
+          {wishlistItems.length > 0 && <span className="nav-badge">{wishlistItems.length}</span>}
+        </Link>
+
+        <Link to="/cart" className="nav-icon nav-icon-badge" aria-label="Cart">
+          <FaShoppingBag />
+          {totalItems > 0 && <span className="nav-badge">{totalItems}</span>}
+        </Link>
       </div>
 
       <div className="navbar-toggle" onClick={() => setIsOpen(true)}>
@@ -58,6 +72,10 @@ const Navbar: React.FC = () => {
           <li onClick={() => setIsOpen(false)}><Link to="/collection/men">Men</Link></li>
           <li onClick={() => setIsOpen(false)}><Link to="/collection/kids">Kids</Link></li>
           <li onClick={() => setIsOpen(false)}><Link to="/collection/accessories">Accessories</Link></li>
+          <li onClick={() => setIsOpen(false)}><Link to="/wishlist">Wishlist</Link></li>
+          <li onClick={() => setIsOpen(false)}><Link to="/cart">Cart</Link></li>
+          <li onClick={() => setIsOpen(false)}><Link to="/size-guide">Size Guide</Link></li>
+          <li onClick={() => setIsOpen(false)}><Link to="/faq">FAQ</Link></li>
         </ul>
       </div>
     </>

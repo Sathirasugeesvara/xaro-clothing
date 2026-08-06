@@ -102,6 +102,26 @@ h2 {
 .nav-icon:hover {
   color: var(--rust);
 }
+.nav-icon-badge {
+  position: relative;
+  display: inline-flex;
+}
+.nav-badge {
+  position: absolute;
+  top: -8px;
+  right: -10px;
+  background: var(--rust);
+  color: #fff;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  min-width: 16px;
+  height: 16px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 3px;
+}
 .navbar-toggle {
   display: none;
   font-size: 1.5rem;
@@ -185,6 +205,7 @@ h2 {
     flex-direction: row; 
     justify-content: space-between;
     align-items: center;
+    padding: 0.8rem 1.2rem;
   }
   .navbar-toggle {
     display: block;
@@ -762,6 +783,30 @@ h2 {
   width: 420px;
   border-radius: 6px;
 }
+.thumb-row {
+  display: flex;
+  gap: 10px;
+  margin-top: 12px;
+}
+.thumb {
+  width: 70px;
+  height: 90px;
+  padding: 0;
+  border: 2px solid transparent;
+  border-radius: 4px;
+  overflow: hidden;
+  cursor: pointer;
+  background: none;
+}
+.thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.thumb.active {
+  border-color: var(--rust);
+}
 .details-right {
   max-width: 400px;
 }
@@ -841,6 +886,188 @@ h2 {
 .add-btn:disabled {
   background: #c9c3b6;
   cursor: not-allowed;
+}
+.trust-badges {
+  list-style: none;
+  padding: 0;
+  margin: 14px 0 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.trust-badges li {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12.5px;
+  color: var(--selvage);
+  font-weight: 600;
+}
+.trust-badges li svg {
+  flex-shrink: 0;
+  font-size: 13px;
+}
+
+/* Cart Page */
+.cart-list {
+  max-width: 700px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.cart-item {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  background: #fff;
+  border: 1px solid var(--hairline);
+  border-radius: 6px;
+  padding: 14px;
+}
+.cart-item-img {
+  width: 80px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 4px;
+  flex-shrink: 0;
+}
+.cart-item-info {
+  flex: 1;
+}
+.cart-item-info h3 {
+  margin: 0 0 4px;
+  font-size: 15px;
+}
+.cart-item-size {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--grey);
+  margin: 0 0 6px;
+}
+.cart-item-info .quantity {
+  margin: 8px 0 0;
+}
+.cart-remove-btn {
+  background: none;
+  border: none;
+  color: var(--grey);
+  cursor: pointer;
+  font-size: 16px;
+  padding: 8px;
+  align-self: flex-start;
+}
+.cart-remove-btn:hover {
+  color: var(--rust);
+}
+.cart-summary {
+  max-width: 700px;
+  margin: 30px auto 0;
+  background: #fff;
+  border: 1px solid var(--hairline);
+  border-radius: 6px;
+  padding: 20px;
+}
+.cart-total {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  letter-spacing: 1px;
+  margin-bottom: 16px;
+  text-transform: uppercase;
+}
+.cart-clear-btn {
+  width: 100%;
+  background: none;
+  border: none;
+  color: var(--grey);
+  padding: 10px;
+  margin-top: 8px;
+  cursor: pointer;
+  font-size: 13px;
+  text-decoration: underline;
+}
+.cart-clear-btn:hover {
+  color: var(--rust);
+}
+@media (max-width: 600px) {
+  .cart-item {
+    flex-wrap: wrap;
+  }
+}
+.size-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 16px 0 30px;
+  font-family: var(--font-mono);
+  font-size: 13px;
+}
+.size-table th,
+.size-table td {
+  border: 1px solid var(--hairline);
+  padding: 10px 12px;
+  text-align: center;
+}
+.size-table th {
+  background: var(--canvas);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: 11px;
+}
+.faq-item {
+  border-bottom: 1px solid var(--hairline);
+  padding: 18px 0;
+}
+.faq-item h2 {
+  font-size: 1.05rem;
+  text-align: left;
+  margin: 0 0 8px;
+  font-family: var(--font-body);
+  font-weight: 700;
+  color: var(--ink);
+}
+.faq-item p {
+  margin: 0;
+  color: var(--grey);
+  line-height: 1.5;
+}
+.insta-feed {
+  padding: 50px 20px;
+  background: #fff;
+}
+.insta-feed .title svg {
+  color: var(--rust);
+  vertical-align: -2px;
+  margin-right: 6px;
+}
+.insta-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+.insta-tile {
+  display: block;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  border-radius: 4px;
+}
+.insta-tile img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: 0.3s;
+}
+.insta-tile:hover img {
+  transform: scale(1.08);
+}
+@media (max-width: 600px) {
+  .insta-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 @media (max-width: 768px) {
   .details-container {
