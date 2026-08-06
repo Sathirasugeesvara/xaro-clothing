@@ -96,7 +96,6 @@ const ProductList = () => {
               price={Number(product.price)}
               image={product.image}
               stock={Number(product.stock)}
-              sizes={product.sizes}
             />
           ))
         ) : (
