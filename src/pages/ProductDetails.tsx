@@ -5,7 +5,6 @@ import config, { getWhatsAppUrl } from "../config";
 import { useCart } from "../context/CartContext";
 import { formatPrice } from "../utils/format";
 import TrustBadges from "../components/TrustBadges";
-import sizeChartImg from "../assets/size-chart.png";
 
 const ProductDetails = () => {
   const { id } = useParams();
@@ -19,7 +18,6 @@ const ProductDetails = () => {
   const [added, setAdded] = useState(false);
   const [error, setError] = useState(false);
   const [retryCount, setRetryCount] = useState(0);
-  const [showSizeChart, setShowSizeChart] = useState(false);
 
   // Fetch data from Google Sheets API (SheetDB)
   useEffect(() => {
@@ -121,9 +119,6 @@ Link: ${window.location.href}`;
         <div className="sizes">
           <div className="sizes-heading-row">
             <h4>Select Size</h4>
-            <button className="size-chart-link" onClick={() => setShowSizeChart(true)}>
-              📏 Size Chart
-            </button>
           </div>
 
           <div className="size-list">
@@ -177,33 +172,7 @@ Link: ${window.location.href}`;
         </button>
 
         <TrustBadges />
-
-        {/* SIZE CHART — shown at the bottom of the product page */}
-        <div className="size-chart-box">
-          <h4>Size Chart</h4>
-          <img
-            src={sizeChartImg}
-            alt="Size chart in inches and cm"
-            className="size-chart-preview"
-            onClick={() => setShowSizeChart(true)}
-          />
-          <button className="size-chart-link" onClick={() => setShowSizeChart(true)}>
-            View Full Size Chart
-          </button>
-        </div>
       </div>
-
-      {/* SIZE CHART MODAL */}
-      {showSizeChart && (
-        <div className="size-chart-modal" onClick={() => setShowSizeChart(false)}>
-          <div className="size-chart-modal-content" onClick={(e) => e.stopPropagation()}>
-            <button className="size-chart-close" onClick={() => setShowSizeChart(false)}>
-              ✕
-            </button>
-            <img src={sizeChartImg} alt="Size chart in inches and cm" />
-          </div>
-        </div>
-      )}
     </div>
   );
 };

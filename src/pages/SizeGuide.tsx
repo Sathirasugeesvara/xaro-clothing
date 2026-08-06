@@ -51,6 +51,29 @@ const SizeGuide = () => {
           </tbody>
         </table>
 
+        <h2>Accessories</h2>
+        <table className="size-table">
+          <thead>
+            <tr>
+              <th>Item</th>
+              <th>Size</th>
+              <th>Measurement</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Cap</td><td>S/M</td><td>Head circumference 54–57 cm</td></tr>
+            <tr><td>Cap</td><td>L/XL</td><td>Head circumference 58–61 cm</td></tr>
+            <tr><td>Belt</td><td>S</td><td>Waist 74–84 cm (belt length ~90 cm)</td></tr>
+            <tr><td>Belt</td><td>M</td><td>Waist 86–96 cm (belt length ~100 cm)</td></tr>
+            <tr><td>Belt</td><td>L</td><td>Waist 98–108 cm (belt length ~110 cm)</td></tr>
+            <tr><td>Belt</td><td>XL</td><td>Waist 110–120 cm (belt length ~120 cm)</td></tr>
+            <tr><td>Watch</td><td>Standard</td><td>Case 40–44 mm, strap fits wrist 14–21 cm</td></tr>
+          </tbody>
+        </table>
+        <p>
+          <strong>Cap:</strong> measure around your head just above the ears. <strong>Belt:</strong> pick the size matching your waist measurement — belt length is measured from buckle to the middle hole. <strong>Watch:</strong> most straps are adjustable across the wrist range shown above.
+        </p>
+
         <h2>Still Unsure?</h2>
         <p>
           Message us on WhatsApp with your measurements and we'll help you pick the right size before you order.

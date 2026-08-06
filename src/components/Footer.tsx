@@ -67,7 +67,7 @@ const Footer: React.FC = () => {
 
     <div className="footer-bottom">
   <p>
-    Copyright © 2026 Sathira Sugeeesvara. All rights reserved.
+     Copyright © 2026 {config.shopNameFull}. All rights reserved.
     <br />
     Powered by {" "}
     <a
