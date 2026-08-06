@@ -2,7 +2,6 @@
   "name": "xaro-clothing",
   "private": true,
   "version": "0.0.0",
-  "homepage": "https://sathirasugeesvara.github.io/xaro-clothing/",
   "type": "module",
   "scripts": {
     "dev": "vite",
