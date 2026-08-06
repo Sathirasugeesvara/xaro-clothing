@@ -30,6 +30,7 @@ const Wishlist = () => {
             price={item.price}
             image={item.image}
             stock={item.stock}
+            sizes={item.sizes}
           />
         ))}
       </div>

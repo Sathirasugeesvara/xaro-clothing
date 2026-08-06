@@ -5,6 +5,7 @@ import config, { getWhatsAppUrl } from "../config";
 import { useCart } from "../context/CartContext";
 import { formatPrice } from "../utils/format";
 import TrustBadges from "../components/TrustBadges";
+import sizeChartImg from "../assets/size-chart.png";
 
 const ProductDetails = () => {
   const { id } = useParams();
@@ -16,17 +17,41 @@ const ProductDetails = () => {
   const [quantity, setQuantity] = useState(1);
   const [activeImage, setActiveImage] = useState(0);
   const [added, setAdded] = useState(false);
+  const [error, setError] = useState(false);
+  const [retryCount, setRetryCount] = useState(0);
+  const [showSizeChart, setShowSizeChart] = useState(false);
 
   // Fetch data from Google Sheets API (SheetDB)
   useEffect(() => {
+    setError(false);
+    setProduct(null);
+
     fetch(config.sheetDbUrl)
-      .then(res => res.json())
+      .then(res => {
+        if (!res.ok) throw new Error(`Request failed: ${res.status}`);
+        return res.json();
+      })
       .then(data => {
         const found = data.find((item: any) => item.id == id);
+        if (!found) throw new Error("Product not found");
         setProduct(found);
       })
-      .catch(err => console.error("Failed to load product:", err));
-  }, [id]);
+      .catch(err => {
+        console.error("Failed to load product:", err);
+        setError(true);
+      });
+  }, [id, retryCount]);
+
+  if (error) {
+    return (
+      <div className="fetch-error">
+        <p>Couldn't load this product. Check your connection and try again.</p>
+        <button className="add-btn" style={{ maxWidth: 220 }} onClick={() => setRetryCount((c) => c + 1)}>
+          Try Again
+        </button>
+      </div>
+    );
+  }
 
   if (!product) return <p style={{ textAlign: "center" }}>Loading...</p>;
 
@@ -94,7 +119,9 @@ Link: ${window.location.href}`;
 
         {/* SIZE */}
         <div className="sizes">
-          <h4>Select Size</h4>
+          <div className="sizes-heading-row">
+            <h4>Select Size</h4>
+          </div>
 
           <div className="size-list">
             {sizes.map((size: string, i: number) => (
@@ -147,7 +174,33 @@ Link: ${window.location.href}`;
         </button>
 
         <TrustBadges />
+
+        {/* SIZE CHART — shown at the bottom of the product page */}
+        <div className="size-chart-box">
+          <h4>Size Chart</h4>
+          <img
+            src={sizeChartImg}
+            alt="Size chart in inches and cm"
+            className="size-chart-preview"
+            onClick={() => setShowSizeChart(true)}
+          />
+          <button className="size-chart-link" onClick={() => setShowSizeChart(true)}>
+            View Full Size Chart
+          </button>
+        </div>
       </div>
+
+      {/* SIZE CHART MODAL */}
+      {showSizeChart && (
+        <div className="size-chart-modal" onClick={() => setShowSizeChart(false)}>
+          <div className="size-chart-modal-content" onClick={(e) => e.stopPropagation()}>
+            <button className="size-chart-close" onClick={() => setShowSizeChart(false)}>
+              ✕
+            </button>
+            <img src={sizeChartImg} alt="Size chart in inches and cm" />
+          </div>
+        </div>
+      )}
     </div>
   );
 };

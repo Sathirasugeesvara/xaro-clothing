@@ -9,23 +9,32 @@ const ProductList = () => {
 
   const [products, setProducts] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(false);
+  const [retryCount, setRetryCount] = useState(0);
 
   const queryParams = new URLSearchParams(location.search);
   const searchQuery = queryParams.get("search")?.toLowerCase() || "";
 
   // 🔥 FETCH DATA
   useEffect(() => {
+    setLoading(true);
+    setError(false);
+
     fetch(config.sheetDbUrl)
-      .then((res) => res.json())
+      .then((res) => {
+        if (!res.ok) throw new Error(`Request failed: ${res.status}`);
+        return res.json();
+      })
       .then((data) => {
         setProducts(data);
         setLoading(false);
       })
       .catch((err) => {
-        console.log(err);
+        console.error(err);
+        setError(true);
         setLoading(false);
       });
-  }, []);
+  }, [retryCount]);
 
   // 🔥 FILTER PRODUCTS
   const filteredProducts = products.filter((p: any) => {
@@ -56,6 +65,17 @@ const ProductList = () => {
     );
   }
 
+  if (error) {
+    return (
+      <div className="fetch-error">
+        <p>Couldn't load products. Check your connection and try again.</p>
+        <button className="add-btn" style={{ maxWidth: 220 }} onClick={() => setRetryCount((c) => c + 1)}>
+          Try Again
+        </button>
+      </div>
+    );
+  }
+
   return (
     <div className="product-page">
       <h2 className="title">
@@ -76,6 +96,7 @@ const ProductList = () => {
               price={Number(product.price)}
               image={product.image}
               stock={Number(product.stock)}
+              sizes={product.sizes}
             />
           ))
         ) : (

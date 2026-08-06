@@ -7,7 +7,7 @@ export default defineConfig({
     react(),
     VitePWA({
       registerType: 'autoUpdate',
-      includeAssets: ['favicon.png'],
+      includeAssets: ['favicon.png', 'apple-touch-icon.png'],
       manifest: {
         name: 'XARO — Modern Clothing',
         short_name: 'XARO',
@@ -18,14 +18,20 @@ export default defineConfig({
         start_url: '/',
         icons: [
           {
-            src: 'favicon.png',
+            src: 'icon-192.png',
             sizes: '192x192',
             type: 'image/png',
           },
           {
-            src: 'favicon.png',
+            src: 'icon-512.png',
             sizes: '512x512',
             type: 'image/png',
+          },
+          {
+            src: 'icon-maskable-512.png',
+            sizes: '512x512',
+            type: 'image/png',
+            purpose: 'maskable',
           },
         ],
       },

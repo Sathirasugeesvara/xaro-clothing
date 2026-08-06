@@ -6,6 +6,7 @@ export type WishlistItem = {
   price: number;
   image: string;
   stock: number;
+  sizes?: string;
 };
 
 type WishlistContextType = {
