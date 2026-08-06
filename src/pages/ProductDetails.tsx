@@ -119,6 +119,9 @@ Link: ${window.location.href}`;
         <div className="sizes">
           <div className="sizes-heading-row">
             <h4>Select Size</h4>
+            <button className="size-guide-btn" onClick={() => navigate("/size-guide")}>
+              Size Guide
+            </button>
           </div>
 
           <div className="size-list">
@@ -163,12 +166,12 @@ Link: ${window.location.href}`;
 
         {/* QUICK ORDER — skips the cart for a single-item WhatsApp order */}
         <button
-          className="cart-clear-btn"
+          className="order-now-btn"
           disabled={!selectedSize || outOfStock}
           onClick={handleWhatsAppOrder}
           style={{ marginTop: 14 }}
         >
-          Or order just this item now →
+          Order Just This Item Now →
         </button>
 
         <TrustBadges />
