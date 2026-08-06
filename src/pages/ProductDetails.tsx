@@ -121,6 +121,9 @@ Link: ${window.location.href}`;
         <div className="sizes">
           <div className="sizes-heading-row">
             <h4>Select Size</h4>
+            <button className="size-chart-link" onClick={() => setShowSizeChart(true)}>
+              📏 Size Chart
+            </button>
           </div>
 
           <div className="size-list">
