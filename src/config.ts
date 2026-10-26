@@ -8,16 +8,17 @@ const config = {
   tagline: "Your trusted clothing destination for modern styles and timeless fashion.",
 
   // International format, digits only, no "+" or spaces
-  whatsappNumber: "94784627089",
+  whatsappNumber: "94762316799",
 
   // Optional pre-made WhatsApp "click to chat" business link (from WA Business app).
   // Leave as "" if the client doesn't have one — code falls back to whatsappNumber.
-  whatsappShortLink: "https://wa.me/message/DEHJ54C7PHAQN1",
+  whatsappShortLink: "",
 
   email: "xaroclothing@gmail.com",
 
-  // Google Sheet (via SheetDB) that powers the product catalog
-  sheetDbUrl: "https://sheetdb.io/api/v1/0d9w4d1lmz6b1",
+  // Public Google Sheet CSV export that powers the product catalog
+  productSheetCsvUrl:
+    "https://docs.google.com/spreadsheets/d/1gQl3n9nTHleT8va6Lkve-vb-5Zse44dI1mVONNHiSzU/export?format=csv",
 
   social: {
     facebook: "https://www.facebook.com/xaro.clothing",
@@ -41,10 +42,8 @@ const config = {
     metaPixelId: "", // e.g. "1234567890123456"
   },
 
-  // Manually curated Instagram highlights for the homepage — SheetDB/free
-  // Instagram embeds need server-side token refresh, which breaks the
-  // "no backend" rule, so this is a simple config list the shop updates
-  // by hand instead. Each links out to the real post.
+  // Manually curated Instagram highlights for the homepage. Instagram embeds
+  // need server-side token refresh, so this list is updated by hand instead. Each links out to the real post.
   instagramPosts: [
     { image: "", link: "https://www.instagram.com/xaro_clothing" },
     { image: "", link: "https://www.instagram.com/xaro_clothing" },

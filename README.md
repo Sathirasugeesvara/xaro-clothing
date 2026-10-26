@@ -24,7 +24,7 @@ This project demonstrates a **real-world frontend architecture** by integrating 
 ## 🧠 System Architecture
 
 * 📊 **Google Sheets** → Acts as a lightweight database
-* 🔗 **SheetDB** → Converts Google Sheets into REST API
+* 🔗 **Google Sheets CSV export** → Serves the public product catalog directly
 * ☁️ **Cloudinary** → Stores and delivers product images
 * ⚛️ **React** → Handles UI rendering and state management
 
@@ -41,7 +41,7 @@ This project demonstrates a **real-world frontend architecture** by integrating 
   * Category
   * Sizes
   * Image URL
-* Dynamically fetched data using **SheetDB API**
+* Dynamically fetched data from the public **Google Sheets CSV export**
 
 ---
 
@@ -72,6 +72,11 @@ This project demonstrates a **real-world frontend architecture** by integrating 
 * Built reusable components (Navbar, Card, Footer)
 * Added loading skeleton UI for better UX
 * Implemented WhatsApp-based ordering system
+
+To connect the catalog, make the product spreadsheet viewable by anyone with the
+link and set its CSV export URL in `src/config.ts`. Keep the required `id`,
+`name`, `price`, and `image` columns in the first sheet; optional columns include
+`description`, `sizes`, `stock`, `category`, `image2`, and `image3`.
 
 ---
 

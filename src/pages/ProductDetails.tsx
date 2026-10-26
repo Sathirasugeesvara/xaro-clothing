@@ -1,9 +1,10 @@
 import { useParams, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import "../App.css";
-import config, { getWhatsAppUrl } from "../config";
+import { getWhatsAppUrl } from "../config";
 import { useCart } from "../context/CartContext";
 import { formatPrice } from "../utils/format";
+import { fetchProducts, type Product } from "../utils/products";
 import TrustBadges from "../components/TrustBadges";
 
 const ProductDetails = () => {
@@ -11,7 +12,7 @@ const ProductDetails = () => {
   const navigate = useNavigate();
   const { addToCart } = useCart();
 
-  const [product, setProduct] = useState<any>(null);
+  const [product, setProduct] = useState<Product | null>(null);
   const [selectedSize, setSelectedSize] = useState<string | null>(null);
   const [quantity, setQuantity] = useState(1);
   const [activeImage, setActiveImage] = useState(0);
@@ -19,18 +20,14 @@ const ProductDetails = () => {
   const [error, setError] = useState(false);
   const [retryCount, setRetryCount] = useState(0);
 
-  // Fetch data from Google Sheets API (SheetDB)
+  // Fetch products from the public Google Sheets CSV export.
   useEffect(() => {
     setError(false);
     setProduct(null);
 
-    fetch(config.sheetDbUrl)
-      .then(res => {
-        if (!res.ok) throw new Error(`Request failed: ${res.status}`);
-        return res.json();
-      })
-      .then(data => {
-        const found = data.find((item: any) => item.id == id);
+    fetchProducts()
+      .then(items => {
+        const found = items.find((item) => item.id === id);
         if (!found) throw new Error("Product not found");
         setProduct(found);
       })
@@ -54,11 +51,14 @@ const ProductDetails = () => {
   if (!product) return <p style={{ textAlign: "center" }}>Loading...</p>;
 
   // convert sizes "S,M,L" → ["S","M","L"]
-  const sizes = product.sizes ? product.sizes.split(",") : [];
+  const sizes = typeof product.sizes === "string"
+    ? product.sizes.split(",").map((size: string) => size.trim()).filter(Boolean)
+    : [];
 
   // Support up to 3 images per product via optional "image2"/"image3" sheet
   // columns. Falls back gracefully to just "image" if those aren't set.
-  const images = [product.image, product.image2, product.image3].filter(Boolean);
+  const images = [product.image, product.image2, product.image3]
+    .filter((image): image is string => Boolean(image && typeof image === "string"));
 
   const handleAddToCart = () => {
     if (!selectedSize) return;

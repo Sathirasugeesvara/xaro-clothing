@@ -1,13 +1,13 @@
 import { useParams, useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
 import Card from "../components/Card";
-import config from "../config";
+import { fetchProducts, type Product } from "../utils/products";
 
 const ProductList = () => {
   const { category } = useParams();
   const location = useLocation();
 
-  const [products, setProducts] = useState<any[]>([]);
+  const [products, setProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
   const [retryCount, setRetryCount] = useState(0);
@@ -20,13 +20,9 @@ const ProductList = () => {
     setLoading(true);
     setError(false);
 
-    fetch(config.sheetDbUrl)
-      .then((res) => {
-        if (!res.ok) throw new Error(`Request failed: ${res.status}`);
-        return res.json();
-      })
-      .then((data) => {
-        setProducts(data);
+    fetchProducts()
+      .then((items) => {
+        setProducts(items);
         setLoading(false);
       })
       .catch((err) => {
@@ -36,10 +32,14 @@ const ProductList = () => {
       });
   }, [retryCount]);
 
+  const normalizeText = (value: unknown) => String(value ?? "").trim().toLowerCase();
+  const normalizedCategory = normalizeText(category);
+  const normalizedSearch = normalizeText(searchQuery);
+
   // 🔥 FILTER PRODUCTS
-  const filteredProducts = products.filter((p: any) => {
-    const matchesCategory = category ? p.category === category : true;
-    const matchesSearch = p.name.toLowerCase().includes(searchQuery);
+  const filteredProducts = products.filter((p) => {
+    const matchesCategory = normalizedCategory ? normalizeText(p?.category) === normalizedCategory : true;
+    const matchesSearch = normalizeText(p?.name).includes(normalizedSearch);
     return matchesCategory && matchesSearch;
   });
 
@@ -88,7 +88,7 @@ const ProductList = () => {
 
       <div className="grid">
         {filteredProducts.length > 0 ? (
-          filteredProducts.map((product: any) => (
+          filteredProducts.map((product) => (
             <Card
               key={product.id}
               id={product.id}
